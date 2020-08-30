@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import Color from './color'
 
 /* 색상 선택 Palette 컴포넌트 정의

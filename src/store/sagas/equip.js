@@ -21,7 +21,7 @@ function* watchRegisterEquip() {
 
 
 /*watch 함수들 트리거 등록*/
-export default function* equipSaga() {
+export default function* equipySaga() {
     yield all([
         fork(watchRegisterEquip)
     ]);

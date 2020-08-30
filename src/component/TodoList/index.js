@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import TodoItem from 'component/TodoItem'
 
 /* 할일 아이템 컴포넌트 정의

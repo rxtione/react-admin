@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 
 /* 할일 아이템 컴포넌트 정의
 *  인자 설명

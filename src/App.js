@@ -1,5 +1,4 @@
-import React, { Fragment, Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import React, { Fragment } from 'react';
 import './App.css';
 
 import Loader from "./layout/loader";

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 /* Palette 객체 하위 Color Item 컴포넌트
 *  인자 설명

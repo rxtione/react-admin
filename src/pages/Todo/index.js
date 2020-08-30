@@ -5,8 +5,6 @@ import * as todoListActions from 'store/modules/todo'
 import TodoInput from 'component/TodoInput';
 import Palette from 'component/Palette';
 import TodoList from 'component/TodoList';
-import LeftMenu from '../../component/LeftMenu';
-import { addtodo, removetodo, checktodo} from '../../store/modules/todo'
 
 /* 할 일 컴포넌트 */
 const Todo = () => {
