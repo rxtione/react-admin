@@ -37,7 +37,7 @@ export default styled.div`
     
     .search-content {
         float: left;
-        padding: 0 10px;
+        padding: 5px 10px 0;
         width: calc(100% - 200px);
         height: 40px;
         border: 1px solid #ddd;
@@ -48,15 +48,19 @@ export default styled.div`
         display: inline;
         max-width: 150px;
         height: 30px;
-        font-size: 14px;
+        font-size: 12px;
         line-height: 30px;
         padding: 5px 10px;
+        vertical-align: top;
     }
     
     .between-date {
-        display:inline-block;
+        display: inline-block;
         width: 30px;
+        height: 30px;
         text-align: center;
+        vertical-align: top;
+        line-height: 30px;
     }
     
     .button-wrap {
@@ -64,8 +68,54 @@ export default styled.div`
         padding-left: 20px;
     }
     
-    .button-wrap Button {
+    Button {
         padding: 4px 12px;
         font-size: 12px;
+        vertical-align: top;
+    }
+
+    select {
+        display: inline-block;
+        padding: 3px 10px 3px 5px !important;
+        margin-right: 5px;
+        width: 100px;
+        height: 30px !important;
+        line-height: 1;
+        font-size: 12px !important;
+        vertical-align: top;
+    }
+
+    .find-text {
+        display: inline-block;
+        padding: 3px 10px !important;
+        margin: 0 5px 0 10px;
+        width: 150px;
+        height: 30px !important;
+        line-height: 1;
+        font-size: 12px !important;
+        vertical-align: top;
+    }
+
+    .list-wrap {
+        margin-top: 30px;
+        font-size: 12px;
+    }
+
+    tr {
+        height: 41px;
+    }
+    
+    td {
+        padding: 5px 10px;
+        vertical-align: middle;
+        line-height: 30px;
+    }
+    
+    th {
+        padding: 5px 10px;
+        background: #535353;
+        vertical-align: middle;
+        line-height: 30px;
+        color: white;
     }
 `

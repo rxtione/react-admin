@@ -32,6 +32,9 @@ const Todo = {
 }
 
 const Equip = {
+    list: ({ config } = {}) => {
+        return http.post(`/equip/list`, null, config)
+    },
     register:({type, useyn, code, construction, name, model_name, car_number, car_identify, manufacturer, car_year, buy_date, uptime, config} = {}) => {
         return http.post(`/equip/register`, {type, useyn, code, construction, name, model_name, car_number, car_identify, manufacturer, car_year, buy_date, uptime}, config)
     }

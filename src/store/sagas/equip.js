@@ -2,7 +2,8 @@ import { all, call, fork, takeEvery, takeLatest } from 'redux-saga/effects'
 import { implementPromiseAction } from '@adobe/redux-saga-promise'
 import API from 'api'
 import {
-    REGISTER_EQUIP
+    REGISTER_EQUIP,
+    EQUIP_LIST_LOAD
 } from 'store/modules/equip'
 
 /* redux-saga 장비 추가 API 호출 */
@@ -14,6 +15,18 @@ function* register(action) {
     })
 }
 
+/* redux-saga 장비 리스트 API 호출 */
+function* fetch(action) {
+    yield call(implementPromiseAction, action, function* () {
+        return yield call(API.Equip.list, { })
+    })
+}
+
+/*watch로 이벤트 구독 설정*/
+function* watchFetch() {
+    yield takeEvery(EQUIP_LIST_LOAD.request, fetch);
+}
+
 /*watch로 이벤트 구독 설정*/
 function* watchRegisterEquip() {
     yield takeLatest(REGISTER_EQUIP.request, register);
@@ -23,6 +36,7 @@ function* watchRegisterEquip() {
 /*watch 함수들 트리거 등록*/
 export default function* equipySaga() {
     yield all([
+        fork(watchFetch),
         fork(watchRegisterEquip)
     ]);
 }

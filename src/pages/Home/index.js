@@ -1,44 +1,45 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import HomeWrap from './style'
 import {Button, Input} from "reactstrap";
+import { useSelector, useDispatch } from 'react-redux';
+import HeavyEquipList from './list'
+import Search from './search'
+
+import * as equipActions from 'store/modules/equip'
 
 /* 라우터 주소 테스트용 컴포넌트
 *  인자 설명
 */
 const Home = () => {
-    const [startDate, setStartDate] = useState('2020-01-01');
-    const [endDate, setEndDate] = useState('2020-01-01');
+    /* api에서 loading과 todos 값 받아옴 */
+    const { equiplist } = useSelector(state => state.equip)
+
+    /* 메세지 전달 */
+    const dispatch = useDispatch();
+
+    /* 리스트를 받아오는 fetch 선언. useCallback을 이용한 재사용. modules의 fetch 실행 */
+    const fetch = useCallback(() => {
+        dispatch(
+            equipActions.fetch({})
+        ).catch(console.log)
+    }, [dispatch]);
+
+    /* 최초 실행 시 목록 받아오도록 fetch() 실행, 리스트를 나갈 때 reset을 호출하여 내용 삭제 */
+    useEffect(() => {
+        fetch()
+
+        return () => {
+            
+        }
+    }, [dispatch, fetch])
 
     return (
         <HomeWrap>
             <h6>Heavy Equip List</h6>
-            <div className="search-wrap">
-                <div className="search-item">
-                    <div className="search-title">
-                        구입 기간
-                    </div>
-                    <div className="search-content">
-                        <Input type="date" className="digits equiplist-date" name="search_start" defaultValue="2020-01-01" onChange={(e)=>setStartDate(e.target.value)}/>
-                        <div className="between-date">~</div>
-                        <Input type="date" className="digits equiplist-date" name="search_end" defaultValue="2020-01-01" onChange={(e)=>setEndDate(e.target.value)}/>
-                        <div className="button-wrap">
-                            <Button className="btn btn-light mr-1">오늘</Button>
-                            <Button className="btn btn-light mr-1">1주일</Button>
-                            <Button className="btn btn-light mr-1">1개월</Button>
-                            <Button className="btn btn-light mr-1">3개월</Button>
-                            <Button className="btn btn-light mr-1">6개월</Button>
-                        </div>
-                    </div>
-                </div>
-                <div className="search-item">
-                    <div className="search-title">
-                        조건 검색1
-                    </div>
-                    <div className="search-content">
-
-                    </div>
-                </div>
-            </div>
+            <Search/>
+            <HeavyEquipList 
+                list={equiplist}
+                />
         </HomeWrap>
     )
 }
